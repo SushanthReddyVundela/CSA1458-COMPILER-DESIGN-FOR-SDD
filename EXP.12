@@ -1,0 +1,16 @@
+%{
+#include <stdio.h>
+%}
+
+%option noyywrap
+
+%%
+[a-zA-Z]+   { printf("Word: %s\n", yytext); }
+"<"|"<="|">"|">="|"=="|"!="    { printf("Relational operator: %s\n", yytext); }
+.           ; /* ignore other characters */
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
